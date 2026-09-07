@@ -159,19 +159,19 @@ export default function Footer() {
             <div className="pt-2 space-y-2">
               <div className="rounded-xl overflow-hidden border border-stone-800 h-24 w-full relative shadow-inner">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.497914841968!2d106.69752531533418!3d10.773121392323674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f385570472f%3A0x17874917372365a9!2zNjggTmFtIEvhu7MgS2jhu59pIE5naMSpYSwgQuG6v24gTmdow6ksIFF14bqtbiAxLCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2svn!4v1620000000000!5m2!1svi!2svn"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Vị trí Heritage Coffee Flagship"
-                  className="grayscale contrast-125 opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                />
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.166675770068!2d105.79548289945149!3d20.96740062566516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acd86dd8ce35%3A0x7937b97073755f66!2zTmfDtSAzMSBZw6puIFjDoSwgWcOqbiBYw6EsIFRoYW5oIExp4buHdCwgSMOgIE7hu5lpLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1788806099777!5m2!1sen!2s"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen={false}
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Vị trí Heritage Coffee"
+  className="grayscale contrast-125 opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+/>
               </div>
               <a
-                href="https://maps.app.goo.gl/SguXqam2xxUi3C548"
+                href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.166675770068!2d105.79548289945149!3d20.96740062566516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acd86dd8ce35%3A0x7937b97073755f66!2zTmfDtSAzMSBZw6puIFjDoSwgWcOqbiBYw6EsIFRoYW5oIExp4buHdCwgSMOgIE7hu5lpLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1788806099777!5m2!1sen!2s"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-amberGold hover:underline"
