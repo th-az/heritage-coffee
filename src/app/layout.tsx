@@ -1,0 +1,134 @@
+import type { Metadata } from 'next';
+import { Playfair_Display, Poppins } from 'next/font/google';
+import './globals.css';
+import { ToastProvider } from '@/context/ToastContext';
+import { CartProvider } from '@/context/CartContext';
+import { WishlistProvider } from '@/context/WishlistContext';
+import { ThemeProvider } from '@/context/ThemeContext';
+
+const playfair = Playfair_Display({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+  description:
+    'Thương hiệu cà phê specialty cao cấp hàng đầu Việt Nam. 100% hạt Arabica Cầu Đất & Fine Robusta rang mộc mẻ nhỏ, bánh tươi nướng mới mỗi sáng cùng không gian thư giãn sang trọng, ấm cúng.',
+  keywords: [
+    'cà phê nguyên chất',
+    'specialty coffee việt nam',
+    'heritage coffee',
+    'quán cà phê đẹp sài gòn hà nội',
+    'espresso',
+    'caffè latte',
+    'cold brew 24h',
+    'croissant bơ pháp',
+    'bạc xỉu di sản',
+    'đặt bàn cà phê',
+  ],
+  authors: [{ name: 'Heritage Coffee Vietnam' }],
+  creator: 'Heritage Coffee & Roastery',
+  publisher: 'Heritage Coffee & Roastery',
+  metadataBase: new URL('https://heritagecoffee.vn'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+    description:
+      'Mang đến những ly cà phê nguyên chất cùng không gian thư giãn hoàn hảo. Khám phá hơn 18 món cà phê specialty và bánh tươi nướng mỗi ngày.',
+    url: 'https://heritagecoffee.vn',
+    siteName: 'Heritage Coffee',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&h=630&q=85',
+        width: 1200,
+        height: 630,
+        alt: 'Heritage Coffee & Roastery không gian sang trọng',
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+    description:
+      'Thương hiệu cà phê specialty cao cấp hàng đầu Việt Nam. 100% hạt Arabica Cầu Đất & Fine Robusta rang mộc.',
+    images: ['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&h=630&q=85'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CafeOrCoffeeShop',
+  name: 'Heritage Coffee & Roastery',
+  image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80',
+  '@id': 'https://heritagecoffee.vn',
+  url: 'https://heritagecoffee.vn',
+  telephone: '+8419006868',
+  priceRange: '39.000₫ - 95.000₫',
+  menu: 'https://heritagecoffee.vn/#thuc-don',
+  servesCuisine: 'Cà phê Specialty, Bánh nướng Artisan, Trà',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '68 Nam Kỳ Khởi Nghĩa, Phường Bến Nghé, Quận 1',
+    addressLocality: 'Hồ Chí Minh',
+    postalCode: '70000',
+    addressCountry: 'VN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 10.7725,
+    longitude: 106.7001,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '07:00',
+      closes: '22:30',
+    },
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="vi" className={`${playfair.variable} ${poppins.variable} scroll-smooth`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="font-sans antialiased bg-cream-100 dark:bg-stone-900 text-onyx dark:text-cream-100 selection:bg-coffee/20 selection:text-coffee-dark transition-colors duration-200">
+        <ThemeProvider>
+          <ToastProvider>
+            <CartProvider>
+              <WishlistProvider>
+                {children}
+              </WishlistProvider>
+            </CartProvider>
+          </ToastProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
