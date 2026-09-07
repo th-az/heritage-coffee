@@ -92,15 +92,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-stone-400">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amberGold shrink-0 mt-0.5" />
-                <span>Chi nhánh 1: 68 Nam Kỳ Khởi Nghĩa, P. Bến Nghé, Quận 1, TP. Hồ Chí Minh</span>
+                <span>Chi nhánh 1: số 1-ngõ 31-yên xá-tân triều-Thanh trì-Hà Nội</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amberGold shrink-0 mt-0.5" />
-                <span>Chi nhánh 2: 12 Tràng Tiền, Quận Hoàn Kiếm, TP. Hà Nội</span>
+                <span>Chi nhánh 2: số 1-ngõ 31-yên xá-tân triều-Thanh trì-Hà Nội</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amberGold shrink-0" />
-                <span>Hotline: 1900 6868 - 028 3822 9999</span>
+                <span>Hotline: 0335251326</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-amberGold shrink-0" />
@@ -171,7 +171,7 @@ export default function Footer() {
                 />
               </div>
               <a
-                href="https://maps.google.com/?q=68+Nam+K%E1%BB%B3+Kh%E1%BB%9Fi+Ngh%C4%A9a,+B%E1%BA%BFn+Ngh%C3%A9,+Qu%E1%BA%ADn+1,+TP.HCM"
+                href="https://maps.app.goo.gl/SguXqam2xxUi3C548"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-amberGold hover:underline"
