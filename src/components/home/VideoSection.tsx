@@ -1,11 +1,30 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SafeImage from '@/components/common/SafeImage';
-import { Play, X, Volume2, VolumeX, Sparkles } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 
 export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // Khóa cuộn trang khi mở Modal & Lắng nghe phím ESC để đóng
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsPlaying(false);
+    };
+
+    if (isPlaying) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPlaying]);
 
   return (
     <section className="py-20 sm:py-28 bg-stone-950 text-white relative overflow-hidden">
@@ -22,8 +41,11 @@ export default function VideoSection() {
           </p>
         </div>
 
-        {/* Video Thumbnail Box with Play Action */}
-        <div className="relative aspect-video max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+        {/* Video Thumbnail Box - Bấm vào đâu cũng phát được */}
+        <div
+          onClick={() => setIsPlaying(true)}
+          className="relative aspect-video max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer"
+        >
           <SafeImage
             src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1600&q=85"
             alt="Thước phim nghệ thuật pha chế Heritage Coffee"
@@ -35,11 +57,15 @@ export default function VideoSection() {
           <div className="absolute inset-0 bg-stone-950/40 group-hover:bg-stone-950/30 transition-colors" />
 
           {/* Central Play Button */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 z-10">
             <button
-              onClick={() => setIsPlaying(true)}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsPlaying(true);
+              }}
               aria-label="Phát video giới thiệu"
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-coffee/90 hover:bg-coffee text-white flex items-center justify-center shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 group-hover:ring-8 group-hover:ring-white/20"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-amber-800/90 hover:bg-amber-800 text-white flex items-center justify-center shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 group-hover:ring-8 group-hover:ring-white/20"
             >
               <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-current translate-x-1" />
             </button>
@@ -52,8 +78,14 @@ export default function VideoSection() {
 
         {/* Modal Player */}
         {isPlaying && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md">
-            <div className="relative max-w-4xl w-full aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+            onClick={() => setIsPlaying(false)}
+          >
+            <div
+              className="relative max-w-4xl w-full aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={() => setIsPlaying(false)}
                 className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/20 hover:bg-white text-stone-900 transition-colors"
@@ -62,6 +94,16 @@ export default function VideoSection() {
                 <X className="w-5 h-5" />
               </button>
 
+              {/* Lựa chọn 1: Dùng Video MP4 trực tiếp (Khuyên dùng để chạy mượt) */}
+              <video
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                controls
+                autoPlay
+                className="w-full h-full object-cover"
+              />
+
+              {/* Lựa chọn 2: Dùng Youtube iframe (Bỏ comment nếu muốn đổi sang Youtube) */}
+              {/*
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/aZ8c71p6b6M?autoplay=1&rel=0"
@@ -69,6 +111,7 @@ export default function VideoSection() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+              */}
             </div>
           </div>
         )}
