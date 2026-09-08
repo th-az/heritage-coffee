@@ -94,24 +94,16 @@ export default function VideoSection() {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Lựa chọn 1: Dùng Video MP4 trực tiếp (Khuyên dùng để chạy mượt) */}
-              <video
-                src="https://www.w3schools.com/html/mov_bbb.mp4"
-                controls
-                autoPlay
-                className="w-full h-full object-cover"
-              />
-
-              {/* Lựa chọn 2: Dùng Youtube iframe (Bỏ comment nếu muốn đổi sang Youtube) */}
-              {/*
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/aZ8c71p6b6M?autoplay=1&rel=0"
-                title="Heritage Coffee - Nghệ thuật rang cà phê mộc thủ công"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-              */}
+              {/* Video MP4 trực tiếp */}
+<video
+  src="/intro.mp4"
+  controls
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+/>
             </div>
           </div>
         )}
