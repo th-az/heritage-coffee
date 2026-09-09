@@ -117,7 +117,7 @@ export default function Header({
             onClick={onScrollToMenu}
             className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-coffee-dark hover:bg-coffee text-white text-xs font-semibold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95 ml-1"
           >
-            <span>Về Heritage</span>
+            <span>Về T.Đạt COFFEE</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
 
