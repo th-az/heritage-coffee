@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   title: 'Heritage Coffee | Tư liệu văn hóa cà phê cộng đồng',
   description:
     'Không gian phi thương mại chia sẻ kiến thức về hạt cà phê Việt Nam, phương pháp pha chế và văn hóa thưởng thức.',
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
   keywords: [
     'cà phê nguyên chất',
     'specialty coffee việt nam',

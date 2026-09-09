@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">T.Đạt Coffee</title>
+  <desc id="desc">Biểu tượng tách cà phê T.Đạt Coffee</desc>
+  <rect width="512" height="512" rx="142" fill="#51372f" />
+  <g fill="none" stroke="#fff4df" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M142 224h190v88c0 65-43 106-95 106s-95-41-95-106v-88Z" stroke-width="25" />
+    <path d="M332 247h36c37 0 57 23 57 52s-20 52-57 52h-36" stroke-width="25" />
+  </g>
+  <path fill="#fff4df" d="M208 204c-3-45 47-58 42-103 37 29 32 65 9 90 40-16 49-44 46-70 38 42 22 94-16 116-22 13-52 16-81-33Z" />
+  <path fill="#51372f" d="M206 340c44-73 80-66 118-107-8 56-43 100-100 122Z" />
+</svg>
