@@ -6,10 +6,9 @@ import SafeImage from '@/components/common/SafeImage';
 
 interface HeroSectionProps {
   onExploreMenu: () => void;
-  onBookTable: () => void;
 }
 
-export default function HeroSection({ onExploreMenu, onBookTable }: HeroSectionProps) {
+export default function HeroSection({ onExploreMenu }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-stone-900 pt-20 pb-16">
       <div className="absolute inset-0 z-0">
@@ -39,7 +38,7 @@ export default function HeroSection({ onExploreMenu, onBookTable }: HeroSectionP
         </h1>
 
         <p className="max-w-2xl text-base sm:text-lg md:text-xl text-stone-300 font-light leading-relaxed mb-10">
-          Mang đến những ly cà phê nguyên chất cùng không gian thư giãn hoàn hảo.
+          Một không gian phi thương mại để cùng tìm hiểu hạt cà phê Việt Nam, phương pháp pha chế và những câu chuyện phía sau mỗi hương vị.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -51,12 +50,6 @@ export default function HeroSection({ onExploreMenu, onBookTable }: HeroSectionP
             <ChevronRight className="w-4 h-4" />
           </button>
 
-          <button
-            onClick={onBookTable}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-cream-100 font-semibold text-sm tracking-wider uppercase backdrop-blur-md border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            Đặt bàn ngay
-          </button>
         </div>
 
         <div className="mt-16 sm:mt-20 grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-white/10 max-w-2xl w-full text-cream-100">

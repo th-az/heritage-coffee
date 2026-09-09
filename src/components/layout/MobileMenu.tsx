@@ -1,16 +1,15 @@
 'use client';
 
 import React from 'react';
-import { X, Coffee, Phone, MapPin, Clock, Calendar, ArrowRight, Sun, Moon } from 'lucide-react';
+import { X, Coffee, Phone, MapPin, Clock, ArrowRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenReservation: () => void;
 }
 
-export default function MobileMenu({ isOpen, onClose, onOpenReservation }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { isDark, toggleTheme } = useTheme();
 
   if (!isOpen) return null;
@@ -19,7 +18,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenReservation }: Mobil
     { label: 'Trang chủ', href: '#hero' },
     { label: 'Giới thiệu', href: '#gioi-thieu' },
     { label: 'Thực đơn', href: '#thuc-don' },
-    { label: 'Khuyến mãi', href: '#khuyen-mai' },
+    { label: 'Sổ tay cà phê', href: '#tin-tuc' },
     { label: 'Không gian', href: '#khong-gian' },
     { label: 'Đánh giá', href: '#danh-gia' },
     { label: 'Tin tức', href: '#tin-tuc' },
@@ -86,19 +85,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenReservation }: Mobil
           </nav>
         </div>
 
-        {/* Bottom CTA & Info */}
+        {/* Community information */}
         <div className="space-y-4 pt-4 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-600 dark:text-stone-400">
-          <button
-            onClick={() => {
-              onClose();
-              onOpenReservation();
-            }}
-            className="w-full py-3 rounded-xl bg-coffee-dark hover:bg-coffee text-white font-semibold flex items-center justify-center gap-2 shadow-md transition-all"
-          >
-            <Calendar className="w-4 h-4" />
-            <span>Đặt Bàn Trực Tuyến</span>
-          </button>
-
           <div className="space-y-2 pt-2">
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-coffee" />

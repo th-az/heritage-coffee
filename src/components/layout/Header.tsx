@@ -1,26 +1,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Coffee, Search, ShoppingBag, Heart, User, Menu, ChevronRight, Sun, Moon } from 'lucide-react';
-import { useCart } from '@/context/CartContext';
+import { Coffee, Search, Heart, Menu, ChevronRight, Sun, Moon } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useTheme } from '@/context/ThemeContext';
 
 interface HeaderProps {
   onOpenSearch: () => void;
-  onOpenAuth: () => void;
   onOpenMobileMenu: () => void;
   onScrollToMenu: () => void;
 }
 
 export default function Header({
   onOpenSearch,
-  onOpenAuth,
   onOpenMobileMenu,
   onScrollToMenu,
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { totalItems, setIsCartOpen } = useCart();
   const { wishlistCount, setIsWishlistOpen } = useWishlist();
   const { isDark, toggleTheme } = useTheme();
 
@@ -36,7 +32,7 @@ export default function Header({
     { label: 'Trang chủ', href: '#hero' },
     { label: 'Giới thiệu', href: '#gioi-thieu' },
     { label: 'Thực đơn', href: '#thuc-don' },
-    { label: 'Khuyến mãi', href: '#khuyen-mai' },
+    { label: 'Sổ tay cà phê', href: '#tin-tuc' },
     { label: 'Không gian', href: '#khong-gian' },
     { label: 'Tin tức', href: '#tin-tuc' },
     { label: 'Liên hệ', href: '#lien-he' },
@@ -118,35 +114,12 @@ export default function Header({
             )}
           </button>
 
-          {/* Cart Button */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative p-2.5 rounded-full text-stone-700 dark:text-stone-200 hover:bg-stone-200/60 dark:hover:bg-stone-800 transition-colors"
-            aria-label="Mở giỏ hàng"
-          >
-            <ShoppingBag className="w-5 h-5" />
-            {totalItems > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-coffee-dark text-white text-[10px] font-bold flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </button>
-
-          {/* Login / Auth Button */}
-          <button
-            onClick={onOpenAuth}
-            className="hidden sm:flex p-2.5 rounded-full text-stone-700 dark:text-stone-200 hover:bg-stone-200/60 dark:hover:bg-stone-800 transition-colors"
-            aria-label="Tài khoản"
-          >
-            <User className="w-5 h-5" />
-          </button>
-
-          {/* Order Now CTA button */}
+          {/* Contact CTA */}
           <button
             onClick={onScrollToMenu}
             className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-coffee-dark hover:bg-coffee text-white text-xs font-semibold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95 ml-1"
           >
-            <span>Liên Hệ Ngay</span>
+            <span>Về Heritage</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
 

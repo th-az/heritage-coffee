@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import { Product, ProductSize, ProductTopping } from '@/types';
 import SafeImage from '@/components/common/SafeImage';
-import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { X, Star, Clock, Coffee, ShieldCheck, Heart, ShoppingBag, Plus, Minus } from 'lucide-react';
+import { X, Star, Clock, ShieldCheck, Heart } from 'lucide-react';
 import Badge from '@/components/common/Badge';
 
 interface ProductDetailModalProps {
@@ -15,43 +14,28 @@ interface ProductDetailModalProps {
 }
 
 export default function ProductDetailModal({ product, isOpen, onClose }: ProductDetailModalProps) {
-  const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
 
   const [selectedSize, setSelectedSize] = useState<ProductSize | null>(null);
   const [selectedToppings, setSelectedToppings] = useState<ProductTopping[]>([]);
-  const [quantity, setQuantity] = useState<number>(1);
-  const [note, setNote] = useState<string>('');
 
   // Reset state when product opens
   React.useEffect(() => {
     if (product) {
       setSelectedSize(product.sizes[0] || null);
       setSelectedToppings([]);
-      setQuantity(1);
-      setNote('');
     }
   }, [product]);
 
   if (!isOpen || !product) return null;
 
   const currentSize = selectedSize || product.sizes[0];
-  const toppingsTotal = selectedToppings.reduce((sum, t) => sum + t.price, 0);
-  const unitPrice = product.price + (currentSize?.extraPrice || 0) + toppingsTotal;
-  const totalPrice = unitPrice * quantity;
-
   const handleToggleTopping = (topping: ProductTopping) => {
     if (selectedToppings.some((t) => t.id === topping.id)) {
       setSelectedToppings(selectedToppings.filter((t) => t.id !== topping.id));
     } else {
       setSelectedToppings([...selectedToppings, topping]);
     }
-  };
-
-  const handleAddToCart = () => {
-    if (!currentSize) return;
-    addToCart(product, currentSize, selectedToppings, quantity, note);
-    onClose();
   };
 
   return (
@@ -126,21 +110,13 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
             </div>
             <span className="text-stone-300">•</span>
             <span className="text-stone-600 dark:text-stone-400 text-xs">
-              Đã bán {product.salesCount.toLocaleString('vi-VN')}+
+              Ghi chú cộng đồng
             </span>
           </div>
 
-          {/* Price */}
-          <div className="flex items-baseline gap-3 my-3">
-            <span className="text-2xl sm:text-3xl font-bold text-coffee-dark dark:text-amberGold">
-              {unitPrice.toLocaleString('vi-VN')}₫
-            </span>
-            {product.originalPrice && product.originalPrice > product.price && (
-              <span className="text-sm line-through text-stone-400">
-                {(product.originalPrice + (currentSize?.extraPrice || 0)).toLocaleString('vi-VN')}₫
-              </span>
-            )}
-          </div>
+          <p className="my-3 text-sm font-semibold text-coffee dark:text-amberGold">
+            Ghi chú tham khảo về hương vị và cách thưởng thức
+          </p>
 
           {/* Description */}
           <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-4">
@@ -184,7 +160,7 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                         {size.label}
                       </span>
                       <span className="text-[11px] font-semibold text-coffee mt-1">
-                        {size.extraPrice > 0 ? `+${size.extraPrice.toLocaleString('vi-VN')}₫` : 'Giá chuẩn'}
+                        Dung tích: {size.volume}
                       </span>
                     </button>
                   );
@@ -220,9 +196,7 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                         />
                         <span>{topping.name}</span>
                       </div>
-                      <span className="font-semibold text-coffee">
-                        +{topping.price.toLocaleString('vi-VN')}₫
-                      </span>
+                      <span className="text-stone-400">Tùy chọn</span>
                     </label>
                   );
                 })}
@@ -240,50 +214,13 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
             </div>
           )}
 
-          {/* Special Notes */}
-          <div className="mb-4">
-            <input
-              type="text"
-              placeholder="Ghi chú thêm cho quán (ít đường, nhiều đá, tách đá...)"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-200 focus:outline-none focus:border-coffee"
-            />
-          </div>
-
-          {/* Quantity & CTA */}
-          <div className="mt-auto pt-4 border-t border-stone-200 dark:border-stone-800 flex items-center gap-3">
-            {/* Quantity Controller */}
-            <div className="flex items-center border border-stone-300 dark:border-stone-700 rounded-xl overflow-hidden shrink-0 bg-stone-50 dark:bg-stone-800">
-              <button
-                type="button"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="p-2 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
-                aria-label="Giảm số lượng"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-              <span className="w-8 text-center text-sm font-bold text-stone-800 dark:text-stone-200">
-                {quantity}
-              </span>
-              <button
-                type="button"
-                onClick={() => setQuantity(quantity + 1)}
-                className="p-2 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
-                aria-label="Tăng số lượng"
-              >
-                <Plus className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Add to Cart Button */}
+          <div className="mt-auto pt-4 border-t border-stone-200 dark:border-stone-800">
             <button
               type="button"
-              onClick={handleAddToCart}
-              className="flex-1 py-3 px-4 rounded-xl bg-coffee-dark hover:bg-coffee text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-coffee/20 transition-all active:scale-[0.98]"
+              onClick={onClose}
+              className="w-full py-3 px-4 rounded-xl bg-coffee-dark hover:bg-coffee text-white font-medium text-sm transition-all active:scale-[0.98]"
             >
-              <ShoppingBag className="w-4 h-4" />
-              <span>Thêm vào giỏ • {totalPrice.toLocaleString('vi-VN')}₫</span>
+              Đóng thông tin
             </button>
           </div>
         </div>

@@ -79,8 +79,8 @@ export default function WishlistDrawer({ onSelectProduct }: WishlistDrawerProps)
                     <h4 className="font-medium text-sm text-stone-900 dark:text-cream-100 line-clamp-1">
                       {prod.name}
                     </h4>
-                    <p className="font-bold text-xs text-coffee-dark dark:text-amberGold mt-0.5">
-                      {prod.price.toLocaleString('vi-VN')}₫
+                    <p className="font-semibold text-xs text-coffee-dark dark:text-amberGold mt-0.5">
+                      Ghi chú hương vị
                     </p>
                     <button
                       onClick={() => {
@@ -90,7 +90,7 @@ export default function WishlistDrawer({ onSelectProduct }: WishlistDrawerProps)
                       className="inline-flex items-center gap-1 text-xs text-coffee hover:underline mt-1 font-medium"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
-                      <span>Xem &amp; chọn món</span>
+                      <span>Xem chi tiết</span>
                     </button>
                   </div>
 

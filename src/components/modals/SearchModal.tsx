@@ -108,8 +108,8 @@ export default function SearchModal({ isOpen, onClose, onSelectProduct }: Search
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="font-bold text-sm text-coffee-dark dark:text-amberGold">
-                    {prod.price.toLocaleString('vi-VN')}₫
+                  <span className="text-xs font-semibold text-coffee-dark dark:text-amberGold">
+                    Xem ghi chú
                   </span>
                   <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-coffee transition-colors" />
                 </div>

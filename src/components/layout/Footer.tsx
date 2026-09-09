@@ -1,23 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Coffee, MapPin, Phone, Mail, Clock, Send, Facebook, Instagram, Youtube, Check } from 'lucide-react';
-import { useToast } from '@/context/ToastContext';
+import React from 'react';
+import { Coffee, MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-  const { showToast } = useToast();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      showToast('success', 'Đăng ký thành công', 'Bạn đã nhận được mã ưu đãi HERITAGE20 giảm 20% cho đơn đầu tiên!');
-      setEmail('');
-    }
-  };
-
   return (
     <footer id="lien-he" className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,39 +107,20 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-stone-400">
               <li><a href="#gioi-thieu" className="hover:text-amberGold transition-colors">Về Heritage Coffee</a></li>
               <li><a href="#thuc-don" className="hover:text-amberGold transition-colors">Thực Đơn Cà Phê &amp; Bánh</a></li>
-              <li><a href="#khuyen-mai" className="hover:text-amberGold transition-colors">Chính Sách Hội Viên VIP</a></li>
-              <li><a href="#dat-ban" className="hover:text-amberGold transition-colors">Đặt Bàn Tiệc &amp; Họp Mặt</a></li>
+              <li><a href="#khong-gian" className="hover:text-amberGold transition-colors">Không gian &amp; phương pháp</a></li>
               <li><a href="#tin-tuc" className="hover:text-amberGold transition-colors">Văn Hóa &amp; Nghệ Thuật Cà Phê</a></li>
-              <li><a href="#lien-he" className="hover:text-amberGold transition-colors">Chính Sách Đổi Trả &amp; Bảo Mật</a></li>
+              <li><a href="#lien-he" className="hover:text-amberGold transition-colors">Liên hệ cộng đồng</a></li>
             </ul>
           </div>
 
-          {/* Newsletter & Map */}
+          {/* Public information & Map */}
           <div className="space-y-4">
             <h4 className="font-serif text-sm font-bold text-cream-100 tracking-wider uppercase">
-              Bản Tin Ưu Đãi
+              Tài nguyên mở
             </h4>
             <p className="text-xs text-stone-400">
-              Đăng ký để nhận voucher giảm 20% và thư mời nếm thử các mẻ hạt Specialty giới hạn.
+              Nội dung được chia sẻ vì mục đích tham khảo và trao đổi kiến thức về cà phê, không bán hàng hay thu phí thành viên.
             </p>
-
-            <form onSubmit={handleSubscribe} className="relative">
-              <input
-                type="email"
-                required
-                placeholder="Nhập email của bạn..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-xs pl-3.5 pr-10 py-2.5 rounded-xl bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-500 focus:outline-none focus:border-amberGold"
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-coffee hover:bg-amberGold text-white transition-colors"
-                aria-label="Gửi email đăng ký"
-              >
-                {subscribed ? <Check className="w-3.5 h-3.5" /> : <Send className="w-3.5 h-3.5" />}
-              </button>
-            </form>
 
             {/* Google Maps Embed & Link */}
             <div className="pt-2 space-y-2">
@@ -186,9 +153,6 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>© 2026 Heritage Coffee &amp; Roastery. Tất cả quyền được bảo lưu.</p>
-          <div className="flex items-center gap-4">
-            <span>Thanh toán an toàn: MoMo • VNPAY • Visa • MasterCard • Tiền mặt</span>
-          </div>
         </div>
       </div>
     </footer>

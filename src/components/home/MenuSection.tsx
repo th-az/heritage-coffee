@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react';
 import { Product, ProductCategory } from '@/types';
 import SafeImage from '@/components/common/SafeImage';
-import Badge from '@/components/common/Badge';
 import { Star, ShoppingBag, Eye, Heart, Search, SlidersHorizontal, Clock } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 
@@ -25,7 +24,7 @@ const CATEGORIES: { id: ProductCategory; label: string }[] = [
 export default function MenuSection({ products, onSelectProduct }: MenuSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('tat-ca');
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'rating' | 'sales'>('default');
+  const [sortBy, setSortBy] = useState<'default' | 'rating' | 'sales'>('default');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
@@ -49,12 +48,6 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
     }
 
     switch (sortBy) {
-      case 'price-asc':
-        result = [...result].sort((a, b) => a.price - b.price);
-        break;
-      case 'price-desc':
-        result = [...result].sort((a, b) => b.price - a.price);
-        break;
       case 'rating':
         result = [...result].sort((a, b) => b.rating - a.rating);
         break;
@@ -84,13 +77,13 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-coffee dark:text-amberGold">
-            Menu Thưởng Thức
+            Tư liệu hương vị
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 dark:text-cream-100 mt-2 mb-4">
-            Thực Đơn Đầy Đủ
+            Bản đồ hương vị
           </h2>
           <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300">
-            Khám phá trọn vẹn hơn 18 món thức uống specialty và bánh thủ công được pha chế tinh tế theo công thức độc bản của Heritage.
+            Khám phá các thức uống và món bánh như một bộ sưu tập tham khảo về nguyên liệu, kỹ thuật và văn hóa thưởng thức tại Heritage.
           </p>
         </div>
 
@@ -135,8 +128,6 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
                 className="text-xs py-2 px-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 focus:outline-none focus:border-coffee cursor-pointer"
               >
                 <option value="default">Mặc định</option>
-                <option value="price-asc">Giá tăng dần</option>
-                <option value="price-desc">Giá giảm dần</option>
                 <option value="rating">Đánh giá cao nhất</option>
                 <option value="sales">Bán chạy nhất</option>
               </select>
@@ -163,12 +154,6 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-
-                  <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10">
-                    {prod.badges?.map((badge) => (
-                      <Badge key={badge} type={badge} />
-                    ))}
-                  </div>
 
                   <div className="absolute top-3.5 right-3.5 flex flex-col gap-2 z-10">
                     <button
@@ -228,17 +213,8 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
 
                   <div className="mt-6 pt-4 border-t border-stone-100 dark:border-stone-700/60 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Giá bán</span>
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-bold text-lg text-coffee-dark dark:text-amberGold">
-                          {prod.price.toLocaleString('vi-VN')}₫
-                        </span>
-                        {prod.originalPrice && prod.originalPrice > prod.price && (
-                          <span className="text-xs text-stone-400 line-through">
-                            {prod.originalPrice.toLocaleString('vi-VN')}₫
-                          </span>
-                        )}
-                      </div>
+                      <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Ghi chú thưởng thức</span>
+                      <span className="text-sm font-semibold text-coffee-dark dark:text-amberGold">Xem thành phần &amp; cách pha</span>
                     </div>
 
                     <button
@@ -246,7 +222,7 @@ export default function MenuSection({ products, onSelectProduct }: MenuSectionPr
                       className="px-4 py-2.5 rounded-xl bg-coffee-dark hover:bg-coffee text-white font-medium text-xs flex items-center gap-1.5 shadow-md transition-all active:scale-95"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
-                      <span>Chọn Mua</span>
+                      <span>Xem chi tiết</span>
                     </button>
                   </div>
                 </div>

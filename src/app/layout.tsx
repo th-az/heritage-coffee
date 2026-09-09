@@ -20,9 +20,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+  title: 'Heritage Coffee | Tư liệu văn hóa cà phê cộng đồng',
   description:
-    'Thương hiệu cà phê specialty cao cấp hàng đầu Việt Nam. 100% hạt Arabica Cầu Đất & Fine Robusta rang mộc mẻ nhỏ, bánh tươi nướng mới mỗi sáng cùng không gian thư giãn sang trọng, ấm cúng.',
+    'Không gian phi thương mại chia sẻ kiến thức về hạt cà phê Việt Nam, phương pháp pha chế và văn hóa thưởng thức.',
   keywords: [
     'cà phê nguyên chất',
     'specialty coffee việt nam',
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+    title: 'Heritage Coffee | Tư liệu văn hóa cà phê cộng đồng',
     description:
-      'Mang đến những ly cà phê nguyên chất cùng không gian thư giãn hoàn hảo. Khám phá hơn 18 món cà phê specialty và bánh tươi nướng mỗi ngày.',
+      'Không gian phi thương mại chia sẻ kiến thức về hạt cà phê Việt Nam, phương pháp pha chế và văn hóa thưởng thức.',
     url: 'https://heritagecoffee.vn',
     siteName: 'Heritage Coffee',
     images: [
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Heritage Coffee & Roastery | Thưởng Thức Cà Phê Đậm Đà Hương Vị',
+    title: 'Heritage Coffee | Tư liệu văn hóa cà phê cộng đồng',
     description:
-      'Thương hiệu cà phê specialty cao cấp hàng đầu Việt Nam. 100% hạt Arabica Cầu Đất & Fine Robusta rang mộc.',
+      'Không gian phi thương mại chia sẻ kiến thức về hạt cà phê Việt Nam và văn hóa thưởng thức.',
     images: ['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&h=630&q=85'],
   },
   robots: {
@@ -80,8 +80,6 @@ const jsonLd = {
   '@id': 'https://heritagecoffee.vn',
   url: 'https://heritagecoffee.vn',
   telephone: '+8419006868',
-  priceRange: '39.000₫ - 95.000₫',
-  menu: 'https://heritagecoffee.vn/#thuc-don',
   servesCuisine: 'Cà phê Specialty, Bánh nướng Artisan, Trà',
   address: {
     '@type': 'PostalAddress',

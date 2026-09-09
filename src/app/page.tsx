@@ -9,21 +9,15 @@ import WhyChooseUs from '@/components/home/WhyChooseUs';
 import BestSeller from '@/components/home/BestSeller';
 import AboutSection from '@/components/home/AboutSection';
 import MenuSection from '@/components/home/MenuSection';
-import PromoBanner from '@/components/home/PromoBanner';
 import GallerySection from '@/components/home/GallerySection';
 import VideoSection from '@/components/home/VideoSection';
 import Testimonials from '@/components/home/Testimonials';
 import BlogSection from '@/components/home/BlogSection';
 import InstagramFeed from '@/components/home/InstagramFeed';
-import ReservationSection from '@/components/home/ReservationSection';
-import NewsletterSection from '@/components/home/NewsletterSection';
 
 import ProductDetailModal from '@/components/modals/ProductDetailModal';
-import CartDrawer from '@/components/modals/CartDrawer';
-import CheckoutModal from '@/components/modals/CheckoutModal';
 import WishlistDrawer from '@/components/modals/WishlistDrawer';
 import SearchModal from '@/components/modals/SearchModal';
-import AuthModal from '@/components/modals/AuthModal';
 import LightboxModal from '@/components/modals/LightboxModal';
 import BackToTop from '@/components/common/BackToTop';
 
@@ -37,7 +31,6 @@ export default function Home() {
   // Modal states
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Lightbox state
@@ -54,17 +47,11 @@ export default function Home() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleScrollToReservation = () => {
-    const el = document.getElementById('dat-ban');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <main className="min-h-screen flex flex-col bg-cream-100 text-onyx selection:bg-coffee/20 selection:text-coffee-dark">
       {/* Sticky Header */}
       <Header
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenAuth={() => setIsAuthOpen(true)}
         onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
         onScrollToMenu={handleScrollToMenu}
       />
@@ -72,7 +59,6 @@ export default function Home() {
       {/* Main Content Sections */}
       <HeroSection
         onExploreMenu={handleScrollToMenu}
-        onBookTable={handleScrollToReservation}
       />
 
       <WhyChooseUs />
@@ -89,8 +75,6 @@ export default function Home() {
         onSelectProduct={(p) => setSelectedProduct(p)}
       />
 
-      <PromoBanner />
-
       <GallerySection
         items={GALLERY_ITEMS}
         onOpenLightbox={handleOpenLightbox}
@@ -104,10 +88,6 @@ export default function Home() {
 
       <InstagramFeed />
 
-      <ReservationSection />
-
-      <NewsletterSection />
-
       {/* Footer */}
       <Footer />
 
@@ -118,10 +98,6 @@ export default function Home() {
         onClose={() => setSelectedProduct(null)}
       />
 
-      <CartDrawer />
-
-      <CheckoutModal />
-
       <WishlistDrawer
         onSelectProduct={(p) => setSelectedProduct(p)}
       />
@@ -130,11 +106,6 @@ export default function Home() {
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onSelectProduct={(p) => setSelectedProduct(p)}
-      />
-
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
       />
 
       <LightboxModal
@@ -148,7 +119,6 @@ export default function Home() {
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        onOpenReservation={handleScrollToReservation}
       />
 
       {/* Floating Back To Top Button */}

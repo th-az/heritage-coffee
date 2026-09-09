@@ -3,8 +3,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Product } from '@/types';
 import SafeImage from '@/components/common/SafeImage';
-import Badge from '@/components/common/Badge';
-import { Star, ShoppingBag, Eye, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Eye, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 
 interface BestSellerProps {
@@ -79,10 +78,10 @@ export default function BestSeller({ products, onSelectProduct }: BestSellerProp
               Bộ Sưu Tập Tuyển Chọn
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 dark:text-cream-100 mt-2">
-              Sản Phẩm Bán Chạy &amp; Nổi Bật
+              Những hương vị được quan tâm
             </h2>
             <p className="text-stone-600 dark:text-stone-400 text-sm max-w-lg mt-3 leading-relaxed">
-              Khám phá các hương vị cà phê và bánh nướng trứ danh được đông đảo thực khách yêu thích nhất tại Heritage.
+              Một vài lựa chọn tiêu biểu để bắt đầu tìm hiểu về nguyên liệu, cách rang và phương pháp pha chế.
             </p>
           </div>
 
@@ -135,15 +134,6 @@ export default function BestSeller({ products, onSelectProduct }: BestSellerProp
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
 
-                {/* Badges: Mới, Bán chạy, Giảm giá */}
-                <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10">
-                  {prod.badges && prod.badges.length > 0 ? (
-                    prod.badges.map((badge) => <Badge key={badge} type={badge} />)
-                  ) : (
-                    <Badge type="Bán chạy" />
-                  )}
-                </div>
-
                 <div className="absolute top-3.5 right-3.5 flex flex-col gap-2 z-10">
                   <button
                     onClick={() => toggleWishlist(prod.id, prod.name)}
@@ -194,25 +184,15 @@ export default function BestSeller({ products, onSelectProduct }: BestSellerProp
 
                 <div className="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Giá bán</span>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-lg text-coffee-dark dark:text-amberGold">
-                        {prod.price.toLocaleString('vi-VN')}₫
-                      </span>
-                      {prod.originalPrice && prod.originalPrice > prod.price && (
-                        <span className="text-xs text-stone-400 line-through">
-                          {prod.originalPrice.toLocaleString('vi-VN')}₫
-                        </span>
-                      )}
-                    </div>
+                    <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Góc tìm hiểu</span>
+                    <span className="text-sm font-semibold text-coffee-dark dark:text-amberGold">Nguyên liệu &amp; kỹ thuật</span>
                   </div>
 
                   <button
                     onClick={() => onSelectProduct(prod)}
                     className="px-4 py-2.5 rounded-xl bg-coffee-dark hover:bg-coffee text-white font-medium text-xs flex items-center gap-1.5 shadow-md transition-all active:scale-95"
                   >
-                    <ShoppingBag className="w-3.5 h-3.5" />
-                    <span>Chọn Mua</span>
+                    <span>Xem chi tiết</span>
                   </button>
                 </div>
               </div>
