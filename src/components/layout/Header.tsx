@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Coffee, Search, Heart, Menu, ChevronRight, Sun, Moon } from 'lucide-react';
+import Image from 'next/image';
+import { Search, Heart, Menu, ChevronRight, Sun, Moon } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -49,17 +50,14 @@ export default function Header({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-2xl bg-coffee-dark group-hover:bg-coffee text-cream-100 flex items-center justify-center shadow-md transition-colors">
-            <Coffee className="w-5 h-5" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-lg sm:text-xl font-bold tracking-widest text-coffee-dark dark:text-cream-100 leading-none">
-              HERITAGE
-            </span>
-            <span className="text-[10px] tracking-[0.25em] text-coffee uppercase font-semibold mt-0.5">
-              Coffee &amp; Roastery
-            </span>
-          </div>
+          <Image
+            src="/dat-coffee-logo.svg"
+            alt="Đạt Coffee & Roastery"
+            width={190}
+            height={55}
+            priority
+            className="h-auto w-[150px] sm:w-[190px] transition-transform group-hover:scale-[1.02]"
+          />
         </a>
 
         {/* Desktop Navigation Links */}

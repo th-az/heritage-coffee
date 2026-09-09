@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Coffee, MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
+import Image from 'next/image';
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -10,19 +11,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
           {/* Brand Col */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-2xl bg-coffee text-cream-100 flex items-center justify-center shadow-md">
-                <Coffee className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-xl font-bold tracking-widest text-cream-100 leading-none">
-                  HERITAGE
-                </span>
-                <span className="text-[10px] tracking-[0.25em] text-amberGold uppercase font-semibold mt-0.5">
-                  Coffee &amp; Roastery
-                </span>
-              </div>
-            </div>
+            <Image
+              src="/dat-coffee-logo.svg"
+              alt="Đạt Coffee & Roastery"
+              width={240}
+              height={70}
+              className="h-auto w-[210px]"
+            />
 
             <p className="text-xs leading-relaxed text-stone-400">
               Nơi gìn giữ linh hồn hạt cà phê cao nguyên Việt Nam. Chúng tôi tỉ mỉ trong từng mẻ rang mộc, trân trọng từng giọt chiết xuất và kiến tạo không gian thư giãn tinh tế cho tâm hồn bạn.
