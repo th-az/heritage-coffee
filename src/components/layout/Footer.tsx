@@ -77,7 +77,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amberGold shrink-0 mt-0.5" />
-                <span>Chi nhánh 2: số 1-ngõ 31-yên xá-tân triều-Thanh trì-Hà Nội</span>
+                <span>Chi nhánh 2: số 6-ngõ-87-yên xá-tân triều-Thanh trì-Hà Nội</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amberGold shrink-0" />
@@ -85,7 +85,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-amberGold shrink-0" />
-                <span>contact@heritagecoffee.vn</span>
+                <span>contact@dat.coffee.vn</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-amberGold shrink-0" />
@@ -100,7 +100,7 @@ export default function Footer() {
               Thông Tin Hữu Ích
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
-              <li><a href="#gioi-thieu" className="hover:text-amberGold transition-colors">Về Heritage Coffee</a></li>
+              <li><a href="#gioi-thieu" className="hover:text-amberGold transition-colors">Về T.ĐẠT Coffee</a></li>
               <li><a href="#thuc-don" className="hover:text-amberGold transition-colors">Thực Đơn Cà Phê &amp; Bánh</a></li>
               <li><a href="#khong-gian" className="hover:text-amberGold transition-colors">Không gian &amp; phương pháp</a></li>
               <li><a href="#tin-tuc" className="hover:text-amberGold transition-colors">Văn Hóa &amp; Nghệ Thuật Cà Phê</a></li>
